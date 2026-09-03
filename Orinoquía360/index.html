@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orinoquía 1990-2000</title>
+    <!-- Librería CSS para el visor 360 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <!-- Tu hoja de estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Escena 0: Título Inicial -->
+    <div id="escena0" class="escena visible">
+        <h1 class="titulo-gigante">Orinoquía<br>1990 - 2000</h1>
+    </div>
+
+    <!-- Escena 1: Comercial -->
+    <div id="escena1" class="escena oculta">
+        <video id="vid1" class="video-fondo" src="https://www.w3schools.com/html/mov_bbb.mp4" playsinline muted></video>
+    </div>
+
+    <!-- Escena 2: Año + Imagen 360 (Ej: Cusiana 1991) -->
+    <div id="escena2" class="escena oculta">
+        <h2 class="texto-flotante">1991</h2>
+        <div id="panorama1" class="visor360"></div>
+    </div>
+
+    <!-- Escena 3: Otro Comercial / Noticiero -->
+    <div id="escena3" class="escena oculta">
+        <video id="vid2" class="video-fondo" src="https://www.w3schools.com/html/mov_bbb.mp4" playsinline muted></video>
+    </div>
+
+    <!-- Escena 4: Siguiente Año + Imagen 360 -->
+    <div id="escena4" class="escena oculta">
+        <h2 class="texto-flotante">1993</h2>
+        <div id="panorama2" class="visor360"></div>
+    </div>
+
+    <!-- Librería JS para el visor 360 -->
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <!-- Tu código de lógica -->
+    <script src="main.js"></script>
+</body>
+</html>
