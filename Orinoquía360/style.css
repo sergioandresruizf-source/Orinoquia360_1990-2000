@@ -1,63 +1,113 @@
-body, html {
+/* Reseteo general y pantalla completa oscura */
+html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden; /* Evita barras de desplazamiento */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
-    font-family: 'Helvetica', Arial, sans-serif;
-    overflow: hidden; 
-    cursor: pointer; /* Indica visualmente que la pantalla es interactiva */
 }
 
+/* Control de transiciones de las escenas */
 .escena {
-    width: 100%; 
-    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.8s ease;
+}
+
+.visible {
+    opacity: 1;
+    z-index: 10;
+}
+
+.oculta {
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none; /* Evita interacciones cuando está oculta */
+}
+
+/* Estilos de los videos y visores 360 */
+.video-fondo, .visor360 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estilos de los textos */
+.contenedor-titulo {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0; 
-    left: 0;
+    height: 100%;
+    text-align: center;
 }
 
-.visible { 
-    opacity: 1; 
-    z-index: 10; 
-    transition: opacity 0.5s ease; /* Efecto de transición suave */
-}
-
-.oculta { 
-    opacity: 0; 
-    z-index: 0; 
-    pointer-events: none; /* Evita que el usuario toque cosas invisibles */
-    transition: opacity 0.5s ease;
-}
-
-.titulo-gigante { 
-    font-size: 4rem; 
-    text-align: center; 
-    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+.titulo-gigante {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
 }
 
 .texto-flotante {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    z-index: 20;
-    font-size: 2.5rem;
-    margin: 0;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.9); /* Sombra para que se lea sobre cualquier imagen */
-    pointer-events: none; 
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    z-index: 50;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
 }
 
-.video-fondo { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; /* contain muestra el video completo, cover lo recorta para llenar */
-    background-color: black;
+/* Mapa Interactivo de la Escena 0 */
+.mapa-interactivo {
+    width: 90%;
+    max-width: 450px;
+    margin-top: 20px;
+    cursor: pointer;
+    /* Transición suave para el zoom de 1.5 segundos */
+    transition: transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 1.5s ease;
 }
 
-.visor360 { 
-    width: 100%; 
-    height: 100%; 
+.mapa-interactivo.zoom-in {
+    /* Escala la imagen 6 veces y mueve el foco hacia la derecha (Orinoquía) */
+    transform: scale(6) translate(-15%, -5%);
+    opacity: 0;
+}
+
+.instruccion-toque {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    animation: pulsar 2s infinite;
+}
+
+@keyframes pulsar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Botón flotante para avanzar de escena */
+.boton-avanzar {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: none; /* Oculto por defecto en la escena 0 */
+}
+
+.boton-avanzar:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
