@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orinoquía 1990-2000</title>
+    <!-- Librería de Pannellum para el 360 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Escena 0: Título y Mapa Interactivo -->
+    <div id="escena0" class="escena visible">
+        <div class="contenedor-titulo">
+            <h1 class="titulo-gigante">Orinoquía<br>1990 - 2000</h1>
+            <p class="instruccion-toque">Toca la región resaltada para viajar en el tiempo</p>
+            <!-- Asegúrate de tener tu imagen guardada en esta ruta -->
+            <img src="assets/img/image_a50ef4.png" id="mapaInicio" alt="Mapa Orinoquía" class="mapa-interactivo">
+        </div>
+    </div>
+
+    <!-- Escena 1: VIDEO #1 -->
+    <div id="escena1" class="escena oculta">
+        <!-- Ejemplo: Video de prueba Big Buck Bunny -->
+        <video id="vid1" class="video-fondo" src="https://www.w3schools.com/html/mov_bbb.mp4" playsinline muted></video>
+    </div>
+
+    <!-- Escena 2: 360 #1 (1991) -->
+    <div id="escena2" class="escena oculta">
+        <h2 class="texto-flotante">1991</h2>
+        <!-- Ejemplo: Imagen 360 de ALMA -->
+        <div id="pano1" class="visor360" data-img="https://pannellum.org/images/alma.jpg"></div>
+    </div>
+
+    <!-- Escena 3: 360 #2 (1992) -->
+    <div id="escena3" class="escena oculta">
+        <h2 class="texto-flotante">1992</h2>
+        <!-- Ejemplo: Imagen 360 de Cerro Toco -->
+        <div id="pano2" class="visor360" data-img="https://pannellum.org/images/cerro-toco-0.jpg"></div>
+    </div>
+
+    <!-- Escena 4: 360 #3 (1993) -->
+    <div id="escena4" class="escena oculta">
+        <h2 class="texto-flotante">1993</h2>
+        <div id="pano3" class="visor360" data-img="https://pannellum.org/images/alma.jpg"></div>
+    </div>
+
+    <!-- Escena 5: 360 #4 (1994) -->
+    <div id="escena5" class="escena oculta">
+        <h2 class="texto-flotante">1994</h2>
+        <div id="pano4" class="visor360" data-img="https://pannellum.org/images/cerro-toco-0.jpg"></div>
+    </div>
+
+    <!-- Escena 6: VIDEO #2 -->
+    <div id="escena6" class="escena oculta">
+        <video id="vid2" class="video-fondo" src="https://www.w3schools.com/html/mov_bbb.mp4" playsinline muted></video>
+    </div>
+
+    <!-- Escena 7: 360 #5 (1995) -->
+    <div id="escena7" class="escena oculta">
+        <h2 class="texto-flotante">1995</h2>
+        <div id="pano5" class="visor360" data-img="https://pannellum.org/images/alma.jpg"></div>
+    </div>
+
+    <!-- Escena 8: 360 #6 (1996) -->
+    <div id="escena8" class="escena oculta">
+        <h2 class="texto-flotante">1996</h2>
+        <div id="pano6" class="visor360" data-img="https://pannellum.org/images/cerro-toco-0.jpg"></div>
+    </div>
+
+    <!-- Escena 9: 360 #7 (1997) -->
+    <div id="escena9" class="escena oculta">
+        <h2 class="texto-flotante">1997</h2>
+        <div id="pano7" class="visor360" data-img="https://pannellum.org/images/alma.jpg"></div>
+    </div>
+
+    <!-- Escena 10: 360 #8 (1998) -->
+    <div id="escena10" class="escena oculta">
+        <h2 class="texto-flotante">1998</h2>
+        <div id="pano8" class="visor360" data-img="https://pannellum.org/images/cerro-toco-0.jpg"></div>
+    </div>
+
+    <!-- Escena 11: VIDEO #3 -->
+    <div id="escena11" class="escena oculta">
+        <video id="vid3" class="video-fondo" src="https://www.w3schools.com/html/mov_bbb.mp4" playsinline muted></video>
+    </div>
+
+    <!-- Escena 12: 360 #9 (1999) -->
+    <div id="escena12" class="escena oculta">
+        <h2 class="texto-flotante">1999</h2>
+        <div id="pano9" class="visor360" data-img="https://pannellum.org/images/alma.jpg"></div>
+    </div>
+
+    <!-- Escena 13: 360 #10 (2000) -->
+    <div id="escena13" class="escena oculta">
+        <h2 class="texto-flotante">2000</h2>
+        <div id="pano10" class="visor360" data-img="https://pannellum.org/images/cerro-toco-0.jpg"></div>
+    </div>
+
+    <!-- Escena 14: 360 #11 (Impacto Final) -->
+    <div id="escena14" class="escena oculta">
+        <h2 class="texto-flotante">Impacto Final</h2>
+        <div id="pano11" class="visor360" data-img="https://pannellum.org/images/alma.jpg"></div>
+    </div>
+
+    <!-- Botón para avanzar manualmente -->
+    <button id="btnAvanzar" class="boton-avanzar">❯</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
