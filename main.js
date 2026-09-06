@@ -160,16 +160,3 @@ if (videoProcesoPaz) {
         }
     });
 }
-const videoHiguita = document.getElementById('vid2');
-let higuitaTerminado = false;
-if (videoHiguita) {
-    // timeupdate se dispara constantemente mientras el video avanza
-    videoHiguita.addEventListener('timeupdate', () => {
-        
-        // Cambia el 10 por el segundo exacto en el que quieres cortarlo
-        if (videoHiguita.currentTime >= 1 && !higuitaTerminado) {//35
-            higuitaTerminado = true; // Bloqueamos la puerta
-            avanzarEscena();
-        }
-    });
-}
