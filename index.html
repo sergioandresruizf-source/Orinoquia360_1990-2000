@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orinoquía 1990-2000</title>
+    
+    <!-- Librería de Pannellum para el 360 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    
+    <!-- Conexión vital con tu diseño -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Escena 0: Título y Mapa Interactivo -->
+    <div id="escena0" class="escena visible">
+        <div class="contenedor-titulo">
+            <h1 class="titulo-gigante">Orinoquía<br>1990 - 2000</h1>
+            <p class="instruccion-toque">Toca la región resaltada para viajar en el tiempo</p>
+            <img src="assets/image/mapaOrinoquia.png" id="mapaInicio" alt="Mapa Orinoquía" class="mapa-interactivo">
+        </div>
+    </div>
+
+    <!-- Escena 1: VIDEO #1 (Pablo Escobar) -->
+    <div id="escena1" class="escena oculta">
+        <video id="vid1" class="video-en-tv" src="assets/video/PabloEscobar.webm" playsinline></video>
+        <img src="assets/image/tv_antiguo.png" class="marco-tv" alt="Televisor Antiguo">
+    </div>
+
+    <!-- Escena 2: 360 - 1990 -->
+    <div id="escena2" class="escena oculta">
+        <h2 class="texto-flotante">1990</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788669919819!6m8!1m7!1sxpqyK427QXSHgO5ZBltZjw!2m2!1d4.454108904128258!2d-74.05005306024692!3f312.06080711647644!4f-16.697377514795676!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 3: FOTO - 1990 -->
+    <div id="escena3" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">1990 - Contexto Histórico</h2>
+            <img src="assets/image/1990.jpg" class="imagen-historica" alt="Historia 1990">
+            <p class="pie-foto">Firma por vía al Llano, Ofensiva Casa Verde, Cesar Gaviria, Mundial 1990</p>
+        </div>
+    </div>
+
+    <!-- Escena 4: 360 - 1991 -->
+    <div id="escena4" class="escena oculta">
+        <h2 class="texto-flotante">1991</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788667223332!6m8!1m7!1svOww6vfhN68TCMtqnRuRyw!2m2!1d5.881134854326306!2d-71.89260953763907!3f328.5117881839285!4f-4.5408570875924426!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 5: FOTO - 1991 -->
+    <div id="escena5" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">1991 - La Nueva Constitución</h2>
+            <img src="assets/image/1991.jpg" class="imagen-historica" alt="Historia 1991">
+            <p class="pie-foto">Constitución 1991, yacimientos de petroleo, masacre de Ariporo, fortalecimiento Cultural, nuevos departamentos. </p>
+        </div>
+    </div>
+
+    <!-- Escena 6: 360 - 1992 -->
+    <div id="escena6" class="escena oculta">
+        <h2 class="texto-flotante">1992</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788663696125!6m8!1m7!1snPYwuQ_Y6T7nN4B2Cu8TJg!2m2!1d5.005518256129823!2d-72.71035260086803!3f155.8347486702662!4f-18.985979255019757!5f0.4755387665656565" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 7: FOTO - 1992 -->
+    <div id="escena7" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">1992 - Desarrollo Regional</h2>
+            <img src="assets/image/1992.jpg" class="imagen-historica" alt="Historia 1992">
+            <p class="pie-foto">Progreso petrolero, masacre de Caño Sibao, cultivos ilicitos de coca y uso del río.</p>
+        </div>
+    </div>
+
+    <!-- Escena 8: 360 - 1993 -->
+    <div id="escena8" class="escena oculta">
+        <h2 class="texto-flotante">1993</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788703657741!6m8!1m7!1sd8ZHYv4EOLrLnwLpE2XMRA!2m2!1d5.341783964383373!2d-72.39338784966304!3f75.04763530471297!4f-15.342503139794374!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 9: FOTO - 1993 -->
+    <div id="escena9" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">1993 - Transformación</h2>
+            <img src="assets/image/1993.jpg" class="imagen-historica" alt="Historia 1993">
+            <p class="pie-foto">Fundación Corporinoquia, Libro sobre geografía humana de la región, desastres naturales.</p>
+        </div>
+    </div>
+
+    <!-- Escena 10: 360 - 1994 -->
+    <div id="escena10" class="escena oculta">
+        <h2 class="texto-flotante">1994</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788670375855!6m8!1m7!1sOAtVf7fMl7MYJ_yIYE-AXw!2m2!1d4.92066008192123!2d-72.93369764891311!3f65.73702659284147!4f3.9178240647252522!5f0.4000000000000002" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 11: FOTO - 1994 -->
+    <div id="escena11" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">1994 - El auge</h2>
+            <img src="assets/image/1994.jpg" class="imagen-historica" alt="Historia 1994">
+            <p class="pie-foto">Oleoducto Ocensa, Ernesto Samper, terror y violencia</p>
+        </div>
+    </div>
+
+    <!-- Escena 12: VIDEO #2 (Higuita) -->
+    <div id="escena12" class="escena oculta">
+        <video id="vid2" class="video-en-tv" src="assets/video/higuita.webm" playsinline></video>
+        <img src="assets/image/tv_antiguo.png" class="marco-tv" alt="Televisor Antiguo">
+    </div>
+
+    <!-- Escena 13: 360 - 1995 -->
+    <div id="escena13" class="escena oculta">
+        <h2 class="texto-flotante">1995</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788671551892!6m8!1m7!1soz35y0s6I5y1RPVUQxyiTA!2m2!1d3.690689851275757!2d-73.6995830555098!3f209.54614742183904!4f-16.032428848820132!5f2.0876317462374114" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 14: FOTO - 1995 -->
+    <div id="escena14" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">1995 - Mitad de Década</h2>
+            <img src="assets/image/1995.jpg" class="imagen-historica" alt="Historia 1995">
+            <p class="pie-foto">Radar Estadounidense antinarcotráfico, política 8000, terremoto Tauramena, disputas territoriales San Martín</p>
+        </div>
+    </div>
+
+    <!-- Escena 15: 360 - 1996 -->
+    <div id="escena15" class="escena oculta">
+        <h2 class="texto-flotante">1996</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788727363707!6m8!1m7!1sSEjKOqnSIfQVqt5_w-MKPQ!2m2!1d7.01437482955594!2d-70.74492240580413!3f159.2182550719314!4f-4.3045452195111835!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 16: FOTO - 1996 -->
+    <div id="escena16" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">1996 - Economía y Cultura</h2>
+            <img src="assets/image/1996.jpg" class="imagen-historica" alt="Historia 1996">
+            <p class="pie-foto">Universidad Nacional, fumigación con glifosato, marchas cocaleras, toma de Las Delicias, mito del Chupacabras</p>
+        </div>
+    </div>
+
+    <!-- Escena 17: 360 - 1997 -->
+    <div id="escena17" class="escena oculta">
+        <h2 class="texto-flotante">1997</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788665576970!6m8!1m7!1shP-3_Db9QGy-wrp8iGb0sw!2m2!1d4.091662511351244!2d-72.94357737576684!3f112.11975703243846!4f-7.135179342734162!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 18: FOTO - 1997 -->
+    <div id="escena18" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">1997 - Consolidación</h2>
+            <img src="assets/image/1997.jpg" class="imagen-historica" alt="Historia 1997">
+            <p class="pie-foto">Disputas en Puerto Lopez, masacre de Mapiripán, toma de Base militar Patascoy, creación PNN Tinigua</p>
+        </div>
+    </div>
+
+    <!-- Escena 19: 360 - 1998 -->
+    <div id="escena19" class="escena oculta">
+        <h2 class="texto-flotante">1998</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788666853319!6m8!1m7!1s89S248eWboM7gbONGm-V1Q!2m2!1d4.311390302823659!2d-72.0766267505156!3f85.3056704614214!4f-17.154211552756863!5f1.3287224356554233" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 20: FOTO - 1998 -->
+    <div id="escena20" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">1998 - Cambios Sociales</h2>
+            <img src="assets/image/1998.jpg" class="imagen-historica" alt="Historia 1998">
+            <p class="pie-foto">Masacres en puerto Gaitan y rio Meta como fosa común y ruta para el narcotráfico, Andres Pastrana, Muerte del "Cura Perez", toma de Mitú</p>
+        </div>
+    </div>
+
+    <!-- Escena 21: VIDEO #3 (Proceso de Paz) -->
+    <div id="escena21" class="escena oculta">
+        <video id="vid3" class="video-en-tv" src="assets/video/procesoDePaz.mp4" playsinline></video>
+        <img src="assets/image/tv_antiguo.png" class="marco-tv" alt="Televisor Antiguo">
+    </div>
+
+    <!-- Escena 22: 360 - 1999 -->
+    <div id="escena22" class="escena oculta">
+        <h2 class="texto-flotante">1999</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788669458822!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ0VrOEthZVE.!2m2!1d2.264092112533704!2d-73.7941209713787!3f303.6658964571351!4f-2.7804031586377533!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 23: FOTO - 1999 -->
+    <div id="escena23" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">1999 - Fin de Milenio</h2>
+            <img src="assets/image/1999.jpg" class="imagen-historica" alt="Historia 1999">
+            <p class="pie-foto">Dialogos del Caguan, Batalla en Puerto Lleras y Ariari, la silla vacía, "cholo" Valderrama, desmilitarización Caño Cristales</p>
+        </div>
+    </div>
+
+    <!-- Escena 24: 360 - 2000 -->
+    <div id="escena24" class="escena oculta">
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1788703877211!6m8!1m7!1sTDZ2qW9dsfzbZjKSoE7eiA!2m2!1d4.271351803092521!2d-73.50504511368335!3f84.70062245993519!4f-19.25038845897295!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Escena 25: FOTO - 2000 -->
+    <div id="escena25" class="escena oculta">
+        <div class="contenedor-foto">
+            <h2 class="texto-superior">2000 - El Nuevo Siglo</h2>
+            <img src="assets/image/2000.jpg" class="imagen-historica" alt="Historia 2000">
+            <p class="pie-foto">AUC vs. FARC en Cumaral, inauguración Termoyopal, Maria Isabel Urrutia, "carne a la perra" plato tipico de Cumaral, apoyo estadounidense para combatir el narcotrafico. </p>
+        </div>
+    </div>
+
+<!-- Escena Final: Créditos, Agradecimientos y Música Llanera -->
+    <div id="escenaFinal" class="escena oculta">
+        <div class="contenedor-creditos">
+            <h1 class="titulo-final">Gracias por su atención</h1>
+            <p class="subtitulo-final">Hecho por: Grupo Orinoquía 2000-1990</p>
+            <!-- Audio de música llanera (coloca tu archivo en assets/audio/) -->
+            <audio id="musicaLlanera" src="assets/audio/llanera.mp3" preload="auto"></audio>
+        </div>
+    </div>
+
+    <!-- Botón para avanzar manualmente -->
+    <button id="btnAvanzar" class="boton-avanzar">❯</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <script src="main.js"></script>
+</body>
