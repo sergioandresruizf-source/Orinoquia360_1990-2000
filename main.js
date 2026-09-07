@@ -125,14 +125,5 @@ if (videoProcesoPaz) {
     });
 }
 
-const videoHiguita = document.getElementById('vid2');
-let higuitaTerminado = false;
 
-if (videoHiguita) {
-    videoHiguita.addEventListener('timeupdate', () => {
-        if (videoHiguita.currentTime >= 10 && !higuitaTerminado) { 
-            higuitaTerminado = true;
-            avanzarEscena();
-        }
-    });
-}
+
