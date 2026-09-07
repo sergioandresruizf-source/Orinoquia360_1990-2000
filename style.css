@@ -56,9 +56,10 @@ body, html {
 }
 
 .titulo-gigante {
-    font-size: 4rem;
+    font-size: clamp(2rem, 8vw, 3.5rem); /* Se adapta automáticamente al tamaño de la pantalla sin volverse gigante */
     margin-bottom: 10px;
     font-weight: bold;
+    padding: 0 15px; /* Evita que el texto pegue contra los bordes del celular */
 }
 
 .instruccion-toque {
@@ -136,6 +137,7 @@ iframe {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1; /* Se queda al fondo de la escena para no tapar el botón de avanzar */
 }
 
 
