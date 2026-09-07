@@ -1,39 +1,88 @@
-/* 1. Bloquear el scroll y poner fondo negro a toda la página */
+/* ==========================================
+   1. CONFIGURACIÓN GLOBAL Y ESTRUCTURA BASE
+   ========================================== */
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Esto evita que puedas bajar con la rueda del mouse */
+    overflow: hidden;
     background-color: #000;
     font-family: Arial, sans-serif;
 }
 
-/* 2. El núcleo de las escenas: Forzarlas a ocupar toda la pantalla en la misma posición */
+/* El núcleo de las escenas: Adaptado a móviles con svh y sin duplicados */
 .escena {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
-    transition: opacity 0.5s ease-in-out; /* Efecto de fundido al cambiar de escena */
+    height: 100svh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: opacity 0.5s ease-in-out;
 }
 
-/* 3. Ocultar totalmente las escenas inactivas */
+/* Ocultar totalmente las escenas inactivas */
 .escena.oculta {
     opacity: 0;
-    pointer-events: none; /* Evita que los mapas ocultos roben tus clics */
+    pointer-events: none;
     z-index: -1;
 }
 
-/* 4. Traer al frente la escena activa */
+/* Traer al frente la escena activa */
 .escena.visible {
     opacity: 1;
     pointer-events: auto;
     z-index: 10;
 }
 
-/* 5. Diseño de galería para las fotos históricas (fondo oscuro, imagen centrada) */
+
+/* ==========================================
+   2. PANTALLA INICIAL Y MAPA INTERACTIVO
+   ========================================== */
+.contenedor-titulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100svh;
+    color: white;
+    text-align: center;
+}
+
+.titulo-gigante {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.instruccion-toque {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+.mapa-interactivo {
+    width: 400px;
+    cursor: pointer;
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease;
+    z-index: 100;
+}
+
+.zoom-in {
+    transform: scale(5);
+    opacity: 0;
+}
+
+
+/* ==========================================
+   3. GALERÍA Y FOTOS HISTÓRICAS
+   ========================================== */
 .contenedor-foto {
     display: flex;
     flex-direction: column;
@@ -66,65 +115,33 @@ body, html {
     color: #aaa;
     max-width: 800px;
 }
-/* --- ESTILOS DE LA PANTALLA INICIAL --- */
-.contenedor-titulo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: white; /* Hace que el texto sea visible contra el fondo negro */
-    text-align: center;
+
+
+/* ==========================================
+   4. VISORES 360 Y MAPAS WEB (IFRAMES)
+   ========================================== */
+.visor360 {
+    width: 100vw !important;
+    height: 100svh !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
-.titulo-gigante {
-    font-size: 4rem;
-    margin-bottom: 10px;
-    font-weight: bold;
+iframe {
+    width: 100vw !important;
+    height: 100svh !important;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.instruccion-toque {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
-    color: #ccc;
-}
 
-/* --- ESTILO DE LA FLECHA PARA AVANZAR --- */
-.boton-avanzar {
-    position: fixed; /* La mantiene siempre en el mismo lugar de la pantalla */
-    top: 50%;
-    right: 30px;
-    transform: translateY(-50%); /* Centra el botón verticalmente */
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    border: 2px solid white;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1000; /* Asegura que la flecha esté por encima de mapas y fotos */
-    display: none; /* Inicia oculta hasta que el JavaScript la llame */
-    transition: background 0.3s;
-}
-
-.boton-avanzar:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* Efecto al pasar el mouse */
-}
-
-/* --- MAPA INTERACTIVO --- */
-.mapa-interactivo {
-    width: 400px; /* Ajusta este valor según qué tan grande quieras el mapa */
-    cursor: pointer;
-    transition: transform 1.5s ease-in-out, opacity 1.5s ease;
-    z-index: 100;
-}
-
-.zoom-in {
-    transform: scale(5);
-    opacity: 0;
-}
-/* --- ESTILO PARA VIDEOS A PANTALLA COMPLETA --- */
+/* ==========================================
+   5. VIDEOS Y TELEVISOR ANTIGUO
+   ========================================== */
 .video-fondo {
     position: absolute;
     top: 50%;
@@ -133,89 +150,84 @@ body, html {
     min-height: 100%;
     width: auto;
     height: auto;
-    transform: translate(-50%, -50%); /* Centra el video sin importar su resolución */
-    object-fit: cover; /* Evita que el video se estire o se deforme, llenando los bordes negros */
-    z-index: 1; /* Se mantiene al fondo de su escena */
-}
-/* --- CONTENEDOR GENERAL PARA QUE EL TV NO SE DEFORME --- */
-.escena {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #000;
-}
-
-/* --- EL VIDEO DENTRO DEL TUBO DE LA TELE --- */
-.video-en-tv {
-    position: absolute;
-    /* Mueve estos porcentajes si necesitas cuadrarlo milimétricamente */
-    top: 50%;
-    left: 45.5%; 
     transform: translate(-50%, -50%);
-    
-    /* El tamaño exacto del hueco de la pantalla de ese PNG */
-    width: 58%;
-    height: 72%;
-    
-    object-fit: cover; /* Llena el espacio sin deformar los rostros */
-    border-radius: 20px; /* Curva un poco las esquinas para que imiten el vidrio del tubo */
+    object-fit: cover;
     z-index: 1;
 }
 
-/* --- EL MARCO DEL TELEVISOR (ENCIMA) --- */
-.marco-tv {
+.video-en-tv {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 49.5%; 
     transform: translate(-50%, -50%);
-    
-    /* Mantiene las proporciones reales de la tele sin estirarla de los lados */
-    max-width: 90vw;
-    max-height: 90vh;
-    width: auto;
-    height: auto;
-    
-    z-index: 5;
-    pointer-events: none; /* Evita que bloquee clics */
-}
-/* --- FORZAR 360 Y MAPAS A LLENAR LA PANTALLA SIN BORDES --- */
-.visor360 {
-    width: 100vw !important;
-    height: 100vh !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-iframe {
-    width: 100vw !important;
-    height: 100vh !important;
-    border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-/* --- AJUSTE INDIVIDUAL PARA EL VIDEO DE PROCESO DE PAZ (Si es más apaisado) --- */
-.video-proceso-paz {
-    position: absolute;
-    top: 50%;
-    left: 49.5%;
-    transform: translate(-50%, -50%);
-    width: 55%; /* Modifica este porcentaje si necesitas achicarlo/agrandarlo un poco más */
+    width: 55%;
     height: 65%;
     object-fit: cover;
     border-radius: 20px;
     z-index: 1;
 }
+
+.video-proceso-paz {
+    position: absolute;
+    top: 50%;
+    left: 49.5%;
+    transform: translate(-50%, -50%);
+    width: 55%;
+    height: 65%;
+    object-fit: cover;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.marco-tv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   6. BOTÓN DE AVANZAR FLOTANTE (MÓVIL Y PC)
+   ========================================== */
+#btnAvanzar {
+    position: fixed !important;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 99999 !important; /* Capa ultra alta para evitar que desaparezca en 360 */
+    display: none;
+    transition: background 0.3s;
+}
+
+#btnAvanzar:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+/* ==========================================
+   7. PANTALLA FINAL Y CRÉDITOS
+   ========================================== */
 .contenedor-creditos {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100svh;
     background-color: #000;
     color: white;
     text-align: center;
@@ -232,4 +244,17 @@ iframe {
 .subtitulo-final {
     font-size: 1.8rem;
     color: #aaa;
+}
+
+
+/* ==========================================
+   8. MEDIA QUERIES PARA ADAPTABILIDAD MÓVIL
+   ========================================== */
+@media (max-width: 768px) {
+    .video-en-tv, .video-proceso-paz {
+        width: 80% !important;
+        height: auto !important;
+        max-height: 70vh;
+        object-fit: contain;
+    }
 }
