@@ -2,6 +2,7 @@ let escenaActual = 0;
 const totalEscenas = 25; 
 const btnAvanzar = document.getElementById('btnAvanzar');
 let visor360Actual = null; // Guardará el visor para borrarlo de la memoria
+
 // Precargamos el audio en segundo plano apenas abre la página para que esté listo al final
 const musicaLlanera = new Audio('assets/audio/llanera.mp3');
 musicaLlanera.load(); // Le dice al navegador que lo vaya leyendo de una vez
@@ -28,7 +29,6 @@ if (mapaInicio) {
 }
 
 // --- Lógica central para cambiar de escenas ---
-// --- Lógica central para cambiar de escenas ---
 function avanzarEscena() {
     
     // 1. Si ya estamos en la última escena numérica, saltamos directo a los créditos
@@ -43,7 +43,7 @@ function avanzarEscena() {
         return;
     }
 
-    // Si aún estamos recorriendo las escenas normales (del 0 al 25)
+    // Si aún estamos recorriendo las escenas normales
     if (escenaActual < totalEscenas) {
         
         const escenaAnteriorDOM = document.getElementById(`escena${escenaActual}`);
@@ -80,12 +80,20 @@ function avanzarEscena() {
             else if (contenedor360) {
                 btnAvanzar.style.display = 'block';
                 const rutaImagen = contenedor360.getAttribute('data-img');
+                
                 visor360Actual = pannellum.viewer(contenedor360.id, {
                     "type": "equirectangular",
                     "panorama": rutaImagen,
                     "autoLoad": true,
                     "showControls": false
                 });
+
+                // Solución para forzar el redibujado correcto del 360 en móviles
+                setTimeout(() => {
+                    if (visor360Actual) {
+                        visor360Actual.resize();
+                    }
+                }, 200);
             }
             else if (mapaGoogle || fotoPlana) {
                 btnAvanzar.style.display = 'block';
@@ -94,8 +102,7 @@ function avanzarEscena() {
     }
 }
 
-// Función dedicada exclusivamente a apagar la flecha y mostrar tus créditos finales
-// Muestra los créditos y reproduce la música llanera de fondo de forma segura
+// Función dedicada exclusivamente a mostrar los créditos y la música llanera de fondo
 function mostrarPantallaFinal() {
     btnAvanzar.style.display = 'none'; // Oculta la flecha definitivamente
     
@@ -105,22 +112,15 @@ function mostrarPantallaFinal() {
         escenaFinalDOM.classList.add('visible');
     }
 
-    // Solución robusta para saltarse el bloqueo de audio del navegador:
-    // Creamos el objeto de audio por código en el instante exacto del clic
-    const musica = new Audio('assets/audio/llanera.mp3');
-    musica.loop = true; // Hace que se repita si la exposición es larga
-    musica.volume = 0.9; // Volumen al 90%
-    
-    // Intentamos reproducir
-    musica.play().then(() => {
+    // Reproducimos el audio precargado de forma instantánea
+    musicaLlanera.play().then(() => {
         console.log("Música llanera sonando exitosamente.");
     }).catch(error => {
         console.log("El navegador bloqueó el autoplay. Se activará con el próximo toque en pantalla:", error);
         
-        // Plan B: Si por alguna razón el navegador se pone terco, 
-        // configuramos para que suene con cualquier toque adicional en la pantalla final
+        // Plan B: Si el navegador bloquea la reproducción automática por políticas de seguridad
         document.body.addEventListener('click', () => {
-            musica.play();
+            musicaLlanera.play();
         }, { once: true });
     });
 }
@@ -132,30 +132,41 @@ btnAvanzar.addEventListener('click', avanzarEscena);
 document.querySelectorAll('video').forEach(video => {
     video.addEventListener('ended', avanzarEscena);
 });
+
 // Control de tiempo para el video de Pablo Escobar (vid1)
 const videoEscobar = document.getElementById('vid1');
-let escobarTerminado = false; // Flag de seguridad
+let escobarTerminado = false;
 
 if (videoEscobar) {
-    // timeupdate se dispara constantemente mientras el video avanza
     videoEscobar.addEventListener('timeupdate', () => {
-        
-        // Cambia el 10 por el segundo exacto en el que quieres cortarlo
-        if (videoEscobar.currentTime >= 31 && !escobarTerminado) {//30
-            escobarTerminado = true; // Bloqueamos la puerta
+        if (videoEscobar.currentTime >= 31 && !escobarTerminado) {
+            escobarTerminado = true;
             avanzarEscena(); 
         }
     });
 }
+
+// Control de tiempo para el video del Proceso de Paz (vid3)
 const videoProcesoPaz = document.getElementById('vid3');
 let procesoPazTerminado = false;
+
 if (videoProcesoPaz) {
-    // timeupdate se dispara constantemente mientras el video avanza
     videoProcesoPaz.addEventListener('timeupdate', () => {
-        
-        // Cambia el 10 por el segundo exacto en el que quieres cortarlo
-        if (videoProcesoPaz.currentTime >= 36 && !procesoPazTerminado) {//35
-            procesoPazTerminado = true; // Bloqueamos la puerta
+        if (videoProcesoPaz.currentTime >= 36 && !procesoPazTerminado) {
+            procesoPazTerminado = true;
+            avanzarEscena();
+        }
+    });
+}
+
+// Control de tiempo para el video de Higuita (vid2)
+const videoHiguita = document.getElementById('vid2');
+let higuitaTerminado = false;
+
+if (videoHiguita) {
+    videoHiguita.addEventListener('timeupdate', () => {
+        if (videoHiguita.currentTime >= 10 && !higuitaTerminado) { // Ajusta los segundos si lo ves muy corto/largo
+            higuitaTerminado = true;
             avanzarEscena();
         }
     });
